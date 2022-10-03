@@ -21,11 +21,16 @@ app.get('/', async (req, res) => {
         .then(res => res.data.toString().replaceAll('\n', ' ').split(' '))
     // const schema = await TextSchema.create({ text: ['t', 'b'] })
     const randomWords = []
+    const lineEnds = []
     for (let i = 0; i < 100; i++) {
         randomWords.push(words[Math.floor(Math.random() * 1000)])
+        if (randomWords.slice(lineEnds[lineEnds.length - 1], i).join(' ').length > 42 && randomWords.slice(lineEnds[lineEnds.length - 1], i).join(' ').length < 50) {
+            lineEnds.push(i)
+        }
+        console.log(lineEnds)
     }
     res.json({
-        status: 'ok', data: randomWords
+        status: 'ok', data: { words: randomWords, lineEnds }
     })
 })
 app.listen(8000, () => {
