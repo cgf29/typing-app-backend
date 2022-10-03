@@ -19,6 +19,8 @@ setInterval(() => {
 
 
 app.get('/', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const words = await axios.get('https://gist.githubusercontent.com/deekayen/4148741/raw/98d35708fa344717d8eee15d11987de6c8e26d7d/1-1000.txt')
         .then(res => res.data.toString().replaceAll('\n', ' ').split(' '))
     // const schema = await TextSchema.create({ text: ['t', 'b'] })
