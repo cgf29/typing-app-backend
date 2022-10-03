@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
         .then(res => res.data.toString().replaceAll('\n', ' ').split(' '))
     // const schema = await TextSchema.create({ text: ['t', 'b'] })
     const randomWords = []
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
         randomWords.push(words[Math.floor(Math.random() * 1000)])
     }
     res.json({
