@@ -10,14 +10,14 @@ const app = express()
 //     origin: 'http://localhost:3000'
 // }))
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Origin", "https://jazzy-treacle-7c635b.netlify.app/");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Methods", "GET");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Origin", "https://jazzy-treacle-7c635b.netlify.app/");
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//     res.header("Access-Control-Allow-Methods", "GET");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 const url = 'mongodb+srv://admin:xEcZ4F2YPxwhAHQ0@cluster0.ppq7mkc.mongodb.net/?retryWrites=true&w=majority'
 
@@ -30,8 +30,11 @@ setInterval(() => {
 
 app.get('/', async (req, res) => {
     try {
-        // res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin", "*");
         // res.header("Access-Control-Allow-Origin", "https://jazzy-treacle-7c635b.netlify.app/");
+        // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Methods", "GET");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         const words = await axios.get('https://gist.githubusercontent.com/deekayen/4148741/raw/98d35708fa344717d8eee15d11987de6c8e26d7d/1-1000.txt')
             .then(res => res.data.toString().replaceAll('\n', ' ').split(' '))
         // const schema = await TextSchema.create({ text: ['t', 'b'] })
