@@ -5,6 +5,9 @@ import axios from 'axios';
 import TextSchema from './schemas/Text.js'
 
 const app = express()
+app.use(cors({
+    origin: 'https://jazzy-treacle-7c635b.netlify.app/'
+}))
 // app.use(cors({
 //     origin: 'https://jazzy-treacle-7c635b.netlify.app/',
 //     origin: 'http://localhost:3000'
