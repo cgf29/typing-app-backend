@@ -5,9 +5,7 @@ import axios from 'axios';
 import TextSchema from './schemas/Text.js'
 
 const app = express()
-app.use(cors({
-    origin: 'https://jazzy-treacle-7c635b.netlify.app/'
-}))
+app.use(cors())
 // app.use(cors({
 //     origin: 'https://jazzy-treacle-7c635b.netlify.app/',
 //     origin: 'http://localhost:3000'
@@ -31,8 +29,8 @@ setInterval(() => {
 
 app.get('/', async (req, res) => {
     try {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Origin", "https://jazzy-treacle-7c635b.netlify.app/");
+        // res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Origin", "https://jazzy-treacle-7c635b.netlify.app/");
         const words = await axios.get('https://gist.githubusercontent.com/deekayen/4148741/raw/98d35708fa344717d8eee15d11987de6c8e26d7d/1-1000.txt')
             .then(res => res.data.toString().replaceAll('\n', ' ').split(' '))
         // const schema = await TextSchema.create({ text: ['t', 'b'] })
