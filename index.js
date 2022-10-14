@@ -7,7 +7,7 @@ import TextSchema from './schemas/Text.js'
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: "https://jazzy-treacle-7c635b.netlify.app/"
+    origin: "*",
 }))
 
 const url = 'mongodb+srv://admin:xEcZ4F2YPxwhAHQ0@cluster0.ppq7mkc.mongodb.net/?retryWrites=true&w=majority'
